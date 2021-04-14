@@ -18,6 +18,8 @@ use App\Http\Controllers\HomepagController;
 // });
 
 Route::get('/',[HomepagController::class,'index']);
+Route::post('/student/info/save',[HomepagController::class,'save'])->name('student.store');
+Route::get('/student/your/data',[HomepagController::class,'showYourInfo'])->name('show');
 
 Route::get('about', function () {
     return view('frontend.about');

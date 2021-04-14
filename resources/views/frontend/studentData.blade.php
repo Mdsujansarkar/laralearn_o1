@@ -72,23 +72,31 @@ body {
 
   <body class="text-center">
     <a href="{{ route('show') }}" class="form-signin">Show Info</a>
-    <form class="form-signin" action="{{ route('student.store') }}" method="POST">
-     @csrf
-      <h1 class="h3 mb-3 font-weight-normal">Student Info</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Roll</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Class</th>
+    </tr>
+  </thead>
+  <tbody>
+  	@php($i = 0)
+  	@foreach($studentData as $studentDatasingle)
 
-      <label for="inputEmail" class="sr-only">Student Nmae</label>
-      <input type="text" name="name" id="inputEmail" class="form-control" placeholder="Student Nmae" required autofocus><br>
-
-      <label for="inputPassword" class="sr-only">Student Roll</label>
-      <input type="text" id="inputPassword" name="roll" class="form-control" placeholder="Student Roll" required><br>
-      <label for="inputPassword" class="sr-only">Student Subject</label>
-      <input type="text" id="inputPassword" name="subject" class="form-control" placeholder="Student Subject" required>
-     <br><label for="inputPassword" class="sr-only">Student Class</label>
-      <input type="text" id="inputPassword" name="class" class="form-control" placeholder="Student Class" required>
-     
-      <br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Save Info</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
+    <tr>
+    	      <th scope="row">{{ $i++ }}</th>
+      <td>{{ $studentDatasingle->name }}</td>
+      <td>{{ $studentDatasingle->roll }}</td>
+      <td>{{ $studentDatasingle->subject }}</td>
+      <td>{{ $studentDatasingle->class }}</td>
+      
+    </tr>
+    @endforeach
+   
+  </tbody>
+</table>
   </body>
 </html>
