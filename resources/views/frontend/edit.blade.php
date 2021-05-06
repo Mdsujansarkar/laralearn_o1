@@ -71,39 +71,25 @@ body {
   </head>
 
   <body class="text-center">
-    <a href="{{ URL::to('/') }}" class="form-signin">Add Info</a>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Roll</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Class</th>
-      <th scope="col">Action</th>
+    <a href="{{ route('show') }}" class="form-signin">Show Info</a>
+    <form class="form-signin" action="{{ route('student.update') }}" method="POST">
+     @csrf
+     <input type="hidden" name="studUpdate" value="{{ $edit->id }}">
+      <h1 class="h3 mb-3 font-weight-normal">Student Info</h1>
 
-    </tr>
-  </thead>
-  <tbody>
-  	@php($i = 0)
-  	@foreach($studentData as $studentDatasingle)
+      <label for="inputEmail" class="sr-only">Student Nmae</label>
+      <input type="text" name="name" id="inputEmail" class="form-control" value="{{ $edit->name }}" required autofocus><br>
 
-    <tr>
-    	      <th scope="row">{{ $i++ }}</th>
-      <td>{{ $studentDatasingle->name }}</td>
-      <td>{{ $studentDatasingle->roll }}</td>
-      <td>{{ $studentDatasingle->subject }}</td>
-      <td>{{ $studentDatasingle->class }}</td>
-      <td>
-        <a href="{{ route('edit', ['id'=>$studentDatasingle->id]) }}">Edit</a>
-        <a href="{{ route('delete', ['id'=>$studentDatasingle->id]) }}">Delete</a>
-      </td>
-   
-      
-    </tr>
-    @endforeach
-   
-  </tbody>
-</table>
+      <label for="inputPassword" class="sr-only">Student Roll</label>
+      <input type="text" id="inputPassword" name="roll" class="form-control" value="{{ $edit->roll }}" required><br>
+      <label for="inputPassword" class="sr-only">Student Subject</label>
+      <input type="text" id="inputPassword" name="subject" class="form-control" value="{{ $edit->subject }}" required>
+     <br><label for="inputPassword" class="sr-only">Student Class</label>
+      <input type="text" id="inputPassword" name="class" class="form-control" value="{{ $edit->class }}" required>
+     
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Update Info</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
   </body>
 </html>

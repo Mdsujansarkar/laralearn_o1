@@ -20,6 +20,10 @@ use App\Http\Controllers\HomepagController;
 Route::get('/',[HomepagController::class,'index']);
 Route::post('/student/info/save',[HomepagController::class,'save'])->name('student.store');
 Route::get('/student/your/data',[HomepagController::class,'showYourInfo'])->name('show');
+Route::get('/student/info/edit/{id}',[HomepagController::class,'infoEdit'])->name('edit');
+Route::post('/student/info/update',[HomepagController::class,'update'])->name('student.update');
+Route::get('/student/info/delete/{id}',[HomepagController::class,'delete'])->name('delete');
+
 
 Route::get('about', function () {
     return view('frontend.about');
